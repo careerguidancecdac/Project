@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 public class Courses {
+	
 	private String coursename;
 	private Integer courseid;
 	private String description;
@@ -51,7 +52,7 @@ public class Courses {
 		this.modules = modules;
 	}
 
-	@Column(length=20)
+	@Column(length=100)
 	public String getCoursename() {
 		return coursename;
 	}

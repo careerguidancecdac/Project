@@ -21,7 +21,7 @@ public class Module {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getModuleid() {
 		return moduleid;
 	}
@@ -40,7 +40,7 @@ public class Module {
 		this.course = course;
 	}
 
-	@Column(length=30,unique=true)
+	@Column(unique=true)
 	public String getModulename() {
 		return modulename;
 	}

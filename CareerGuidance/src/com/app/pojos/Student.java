@@ -49,7 +49,18 @@ public class Student {
 	private float diplomapercent;
 	private int sscyear;
 	private float sscpercent;
+	private boolean profilecompleted;
 	
+	@Column(nullable=true,columnDefinition="boolean default false")
+	public boolean isProfilecompleted() {
+		return profilecompleted;
+	}
+
+	public void setProfilecompleted(boolean profilecompleted) {
+		this.profilecompleted = profilecompleted;
+	}
+
+	@Column(nullable=true)
 	public int getSscyear() {
 		return sscyear;
 	}
@@ -57,7 +68,8 @@ public class Student {
 	public void setSscyear(int sscyear) {
 		this.sscyear = sscyear;
 	}
-
+	
+	@Column(nullable=true)
 	public float getSscpercent() {
 		return sscpercent;
 	}
@@ -94,7 +106,7 @@ public class Student {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getRegno() {
 		return regno;
 	}
@@ -121,7 +133,7 @@ public class Student {
 		this.dob = dob;
 	}
 
-	@Column(length=20)
+	@Column(length=50,nullable=false)
 	public String getFname() {
 		return fname;
 	}
@@ -130,7 +142,7 @@ public class Student {
 		this.fname = fname;
 	}
 	
-	@Column(length=20)
+	@Column(length=50,nullable=false)
 	public String getLname() {
 		return lname;
 	}
@@ -139,7 +151,7 @@ public class Student {
 		this.lname = lname;
 	}
 
-	@Column(length=50,unique=true)
+	@Column(length=75,unique=true,nullable=false)
 	public String getEmail() {
 		return email;
 	}
@@ -148,7 +160,7 @@ public class Student {
 		this.email = email;
 	}
 
-	@Column(length=250)
+	@Column(length=250,nullable=false)
 	public String getPassword() {
 		return password;
 	}
@@ -166,7 +178,6 @@ public class Student {
 		this.gender = gender;
 	}
 
-	@Column(length=100)
 	public String getImgpath() {
 		return imgpath;
 	}
@@ -175,7 +186,7 @@ public class Student {
 		this.imgpath = imgpath;
 	}
 
-	@Column(length=40)
+	@Column(length=70)
 	public String getCountry() {
 		return country;
 	}
@@ -184,7 +195,7 @@ public class Student {
 		this.country = country;
 	}
 
-	@Column(length=40)
+	@Column(length=70)
 	public String getState() {
 		return state;
 	}
@@ -193,7 +204,7 @@ public class Student {
 		this.state = state;
 	}
 
-	@Column(length=40)
+	@Column(length=70)
 	public String getDistrict() {
 		return district;
 	}
@@ -202,7 +213,7 @@ public class Student {
 		this.district = district;
 	}
 
-	@Column(length=40)
+	@Column(length=70)
 	public String getCity() {
 		return city;
 	}
@@ -211,7 +222,7 @@ public class Student {
 		this.city = city;
 	}
 
-	@Column(length=60)
+	@Column(length=100)
 	public String getAddress() {
 		return address;
 	}
@@ -220,7 +231,7 @@ public class Student {
 		this.address = address;
 	}
 
-	@Column(columnDefinition="boolean default false")
+	@Column(columnDefinition="boolean default false",nullable=true)
 	public boolean isAccstatus() {
 		return accstatus;
 	}
@@ -229,7 +240,7 @@ public class Student {
 		this.accstatus = accstatus;
 	}
 
-	@Column(columnDefinition="boolean default false")
+	@Column(columnDefinition="boolean default false",nullable=true)
 	public boolean isPlaced() {
 		return placed;
 	}
@@ -247,7 +258,7 @@ public class Student {
 		this.lastlogin = lastlogin;
 	}
 
-	@Column(length=30)
+	@Column(length=70)
 	public String getPgcourse() {
 		return pgcourse;
 	}
@@ -256,7 +267,7 @@ public class Student {
 		this.pgcourse = pgcourse;
 	}
 
-	@Column(length=30)
+	@Column(length=70)
 	public String getPgstream() {
 		return pgstream;
 	}
@@ -264,7 +275,7 @@ public class Student {
 	public void setPgstream(String pgstream) {
 		this.pgstream = pgstream;
 	}
-
+	@Column(nullable=true)
 	public int getPgyear() {
 		return pgyear;
 	}
@@ -273,7 +284,7 @@ public class Student {
 		this.pgyear = pgyear;
 	}
 
-	
+	@Column(nullable=true)
 	public float getPgpercent() {
 		return pgpercent;
 	}
@@ -282,7 +293,7 @@ public class Student {
 		this.pgpercent = pgpercent;
 	}
 
-	@Column(length=30)
+	@Column(length=70)
 	public String getGradcourse() {
 		return gradcourse;
 	}
@@ -291,7 +302,7 @@ public class Student {
 		this.gradcourse = gradcourse;
 	}
 
-	@Column(length=30)
+	@Column(length=70)
 	public String getGradstream() {
 		return gradstream;
 	}
@@ -300,6 +311,7 @@ public class Student {
 		this.gradstream = gradstream;
 	}
 
+	@Column(nullable=true)
 	public int getGradyear() {
 		return gradyear;
 	}
@@ -308,6 +320,7 @@ public class Student {
 		this.gradyear = gradyear;
 	}
 
+	@Column(nullable=true)
 	public float getGradpercent() {
 		return gradpercent;
 	}
@@ -316,6 +329,7 @@ public class Student {
 		this.gradpercent = gradpercent;
 	}
 
+	@Column(nullable=true)
 	public boolean isHsc() {
 		return hsc;
 	}
@@ -324,6 +338,7 @@ public class Student {
 		this.hsc = hsc;
 	}
 
+	@Column(nullable=true)
 	public int getHscyear() {
 		return hscyear;
 	}
@@ -332,6 +347,7 @@ public class Student {
 		this.hscyear = hscyear;
 	}
 
+	@Column(nullable=true)
 	public float getHscpercent() {
 		return hscpercent;
 	}
@@ -340,7 +356,7 @@ public class Student {
 		this.hscpercent = hscpercent;
 	}
 
-	@Column(length=40)
+	@Column(length=70)
 	public String getDiplomastream() {
 		return diplomastream;
 	}
@@ -349,6 +365,7 @@ public class Student {
 		this.diplomastream = diplomastream;
 	}
 
+	@Column(nullable=true)
 	public int getDiplomayear() {
 		return diplomayear;
 	}
@@ -357,6 +374,7 @@ public class Student {
 		this.diplomayear = diplomayear;
 	}
 
+	@Column(nullable=true)
 	public float getDiplomapercent() {
 		return diplomapercent;
 	}
@@ -365,6 +383,7 @@ public class Student {
 		this.diplomapercent = diplomapercent;
 	}
 
+	@Column(nullable=true)
 	public long getContact() {
 		return contact;
 	}

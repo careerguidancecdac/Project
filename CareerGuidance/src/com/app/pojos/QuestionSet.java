@@ -23,7 +23,7 @@ public class QuestionSet {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getQuestionid() {
 		return questionid;
 	}

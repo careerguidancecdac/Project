@@ -16,7 +16,7 @@ public class TestId {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getTestid() {
 		return testid;
 	}
@@ -24,7 +24,7 @@ public class TestId {
 		this.testid = testid;
 	}
 	
-	@Column(length=30)
+	@Column(length=100)
 	public String getTestname() {
 		return testname;
 	}

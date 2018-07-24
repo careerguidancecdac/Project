@@ -8,10 +8,13 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>UnBerozgaar</title>
 </head>
 <style>
@@ -34,34 +37,37 @@
     
     <nav class="navbar navbar-inverse">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Page 1-1</a></li>
-            <li><a href="#">Page 1-2</a></li>
-            <li><a href="#">Page 1-3</a></li>
-          </ul>
-        </li>
-        <li><a href="#page2">About Us</a></li>
-        <li><a href="#Courses">Courses</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span> 
+</button>
+<a class="navbar-brand" href="#">CareerGuidance</a>
+</div>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="nav navbar-nav">
+<li class="active"><a href="#">Home</a></li>
+<li><a href="#aboutus">About Us</a></li>
+<li><a href="#feedback">Rate Us</a></li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+<a id="signup" class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>Sign Up <span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href='<c:url value="student/register" />'>Student</a></li>
+<li><a href="company/register">Company</a></li>
+</ul></li>
+<li class="dropdown">
+<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span>Log In<span class="caret"></span></a>
+<ul class="dropdown-menu">
+<li><a href='<c:url value="student/login" />'>Student</a></li>
+<li><a href="company/login">Company</a></li>
+</ul></li>
+
+</ul>
+</div>
+</div>
 </nav>
 
       <!-- /.navbar-collapse --> 
@@ -74,7 +80,7 @@
   <div class="container">
   <br>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
+    <!-- Indicators -->	
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -138,7 +144,7 @@
 <section>
   <div class="row">
     <div class="col-lg-12 page-header text-center" id="page2">
-      <h2>ABOUT US</h2>
+      <h2>OUR TEAM</h2>
     </div>
   </div>
   <div class="container ">
@@ -208,7 +214,7 @@
           <p class="lead">If you have no clue of what to do after graduation,you have landed at correct page.Follow us and Set your future in IT</p>
         </div>
         <div class=" text-center col-sm-6 col-lg-3 col-sm-offset-3 col-md-3 col-xs-offset-4 col-xs-5 col-lg-offset-0"> 
-        	<a class="btn  btn-block btn-lg btn-success" href="#" title="">Sign up now!</a> 
+        	<a class="btn  btn-block btn-lg btn-success" href="#signup" title="">Sign up now!</a> 
         </div>
       </div>
     </div>
@@ -216,16 +222,16 @@
   
   <!-- /container -->
   
-  <div class="container">
+  <div class="container" id="aboutus">
     <div class="row">
       <div class="col-lg-12 page-header text-center">
-        <h2>OUR SERVICES</h2>
+        <h2>ABOUT US</h2>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-6 col-lg-6">
         <h3>E-Learning</h3>
-        <p> <i class="icon-desktop " ></i>We envision a world where anyone, anywhere can transform their life by accessing the world’s best learning experience</p>
+        <p> <i class="icon-desktop " >We envision a world where anyone, anywhere can transform their life by accessing the world’s best learning experience</i></p>
         <p><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#learndetails">View Details »</button></p>
       </div>
        
@@ -251,8 +257,8 @@
     </div>
   </div> 
       <div class="col-xs-6 col-lg-6">
-        <h3>Feature Description</h3>
-        <p> <i class="icon-desktop "></i> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, illo, libero esse assumenda culpa consequatur exercitationem beatae odio praesentium nihil iste ipsum reiciendis pariatur. Recusandae, reiciendis quidem eaque aut ab. </p>
+        <h3>Company Recruitment</h3>
+        <p> <i class="icon-desktop ">we envision a scalable, equitable, merit driven labor market providing credibility and access to talent and opportunity.Our mission is to establish one scientific and credible approach to measuring talent and matching it to opportunity.</i></p>
         <p><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#companydetails">View Details »</button></p>
       </div>
       <!-- Modal -->
@@ -282,7 +288,7 @@
 <div class="well"> </div>
 
 <!-- FOOTER -->
-<div class="container">
+<div class="container" id="feedback">
   <div class="row">
     <div class="col-lg-offset-3 col-xs-12 col-lg-6">
       <div class="jumbotron">
