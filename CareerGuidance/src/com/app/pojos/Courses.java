@@ -18,6 +18,15 @@ public class Courses {
 	private String coursename;
 	private Integer courseid;
 	private String description;
+	private String courseimg;
+	public String getCourseimg() {
+		return courseimg;
+	}
+
+	public void setCourseimg(String courseimg) {
+		this.courseimg = courseimg;
+	}
+
 	public String getDescription() {
 		return description;
 	}

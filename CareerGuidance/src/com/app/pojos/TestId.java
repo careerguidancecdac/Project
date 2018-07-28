@@ -20,6 +20,11 @@ public class TestId {
 	public Integer getTestid() {
 		return testid;
 	}
+	@Override
+	public String toString() {
+		return "TestId [testid=" + testid + ", testname=" + testname + "]";
+	}
+
 	public void setTestid(Integer testid) {
 		this.testid = testid;
 	}

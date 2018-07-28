@@ -9,6 +9,12 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class QuestionSet {
+	@Override
+	public String toString() {
+		return "QuestionSet [questionid=" + questionid + ", testid=" + testid + ", question=" + question
+				+ ", description=" + description + ", optionA=" + optionA + ", optionB=" + optionB + ", optionC="
+				+ optionC + ", optionD=" + optionD + ", answer=" + answer + "]";
+	}
 	private Integer questionid;
 	private TestId testid;
 	private String question;

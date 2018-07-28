@@ -8,6 +8,11 @@ public class StudentResponse {
 	private StudentResponseId responseid;
 	private String studentresponse;
 	
+	public StudentResponse(StudentResponseId responseid, String studentresponse) {
+		super();
+		this.responseid = responseid;
+		this.studentresponse = studentresponse;
+	}
 	public StudentResponse() {
 		// TODO Auto-generated constructor stub
 	}

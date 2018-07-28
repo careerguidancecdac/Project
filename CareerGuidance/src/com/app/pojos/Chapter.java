@@ -11,8 +11,22 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Chapter {
+	@Override
+	public String toString() {
+		return "Chapter [chapterid=" + chapterid + ", moduleid=" + moduleid + ", chaptername=" + chaptername
+				+ ", testid=" + testid + ", youtubelinks=" + youtubelinks + ", websitelinks=" + websitelinks
+				+ ", description=" + description + "]";
+	}
 	private Integer chapterid;
 	private Module moduleid;
+	private String chaptername;
+	public String getChaptername() {
+		return chaptername;
+	}
+
+	public void setChaptername(String chaptername) {
+		this.chaptername = chaptername;
+	}
 	private TestId testid;
 	private String youtubelinks;
 	private String websitelinks;
@@ -23,7 +37,7 @@ public class Chapter {
 	}
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Integer getChapterid() {
 		return chapterid;
 	}

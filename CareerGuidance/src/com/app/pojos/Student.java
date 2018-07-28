@@ -12,8 +12,24 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Student {
+	@Override
+	public String toString() {
+		return "Student [regno=" + regno + ", course=" + course + ", regdate=" + regdate + ", dob=" + dob + ", fname="
+				+ fname + ", lname=" + lname + ", email=" + email + ", password=" + password + ", gender=" + gender
+				+ ", imgpath=" + imgpath + ", country=" + country + ", state=" + state + ", district=" + district
+				+ ", city=" + city + ", address=" + address + ", contact=" + contact + ", accstatus=" + accstatus
+				+ ", placed=" + placed + ", lastlogin=" + lastlogin + ", pgcourse=" + pgcourse + ", pgstream="
+				+ pgstream + ", pgyear=" + pgyear + ", pgpercent=" + pgpercent + ", gradcourse=" + gradcourse
+				+ ", gradstream=" + gradstream + ", gradyear=" + gradyear + ", gradpercent=" + gradpercent + ", hsc="
+				+ hsc + ", hscyear=" + hscyear + ", hscpercent=" + hscpercent + ", diplomastream=" + diplomastream
+				+ ", diplomayear=" + diplomayear + ", diplomapercent=" + diplomapercent + ", sscyear=" + sscyear
+				+ ", sscpercent=" + sscpercent + ", profilecompleted=" + profilecompleted + "]";
+	}
+
 	private Integer regno;
 	private Courses course;
 	private Date regdate;
@@ -29,26 +45,26 @@ public class Student {
 	private String district;
 	private String city;
 	private String address;
-	private long contact;
+	private String contact;
 	private boolean accstatus;
 	private boolean placed;
 	private Date lastlogin;
 	private String pgcourse;
 	private String pgstream;
-	private int pgyear;
-	private float pgpercent;
+	private String pgyear;
+	private String pgpercent;
 	private String gradcourse;
 	private String gradstream;
-	private int gradyear;
-	private float gradpercent;
+	private String gradyear;
+	private String gradpercent;
 	private boolean hsc;
-	private int hscyear;
-	private float hscpercent;
+	private String hscyear;
+	private String hscpercent;
 	private String diplomastream;
-	private int diplomayear;
-	private float diplomapercent;
-	private int sscyear;
-	private float sscpercent;
+	private String diplomayear;
+	private String diplomapercent;
+	private String sscyear;
+	private String sscpercent;
 	private boolean profilecompleted;
 	
 	@Column(nullable=true,columnDefinition="boolean default false")
@@ -61,24 +77,24 @@ public class Student {
 	}
 
 	@Column(nullable=true)
-	public int getSscyear() {
+	public String getSscyear() {
 		return sscyear;
 	}
 
-	public void setSscyear(int sscyear) {
+	public void setSscyear(String sscyear) {
 		this.sscyear = sscyear;
 	}
 	
 	@Column(nullable=true)
-	public float getSscpercent() {
+	public String getSscpercent() {
 		return sscpercent;
 	}
 
-	public void setSscpercent(float sscpercent) {
+	public void setSscpercent(String sscpercent) {
 		this.sscpercent = sscpercent;
 	}
 
-	public void setContact(long contact) {
+	public void setContact(String contact) {
 		this.contact = contact;
 	}
 
@@ -125,6 +141,7 @@ public class Student {
 	}
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	public Date getDob() {
 		return dob;
 	}
@@ -276,20 +293,20 @@ public class Student {
 		this.pgstream = pgstream;
 	}
 	@Column(nullable=true)
-	public int getPgyear() {
+	public String getPgyear() {
 		return pgyear;
 	}
 
-	public void setPgyear(int pgyear) {
+	public void setPgyear(String pgyear) {
 		this.pgyear = pgyear;
 	}
 
 	@Column(nullable=true)
-	public float getPgpercent() {
+	public String getPgpercent() {
 		return pgpercent;
 	}
 
-	public void setPgpercent(float pgpercent) {
+	public void setPgpercent(String pgpercent) {
 		this.pgpercent = pgpercent;
 	}
 
@@ -312,20 +329,20 @@ public class Student {
 	}
 
 	@Column(nullable=true)
-	public int getGradyear() {
+	public String getGradyear() {
 		return gradyear;
 	}
 
-	public void setGradyear(int gradyear) {
+	public void setGradyear(String gradyear) {
 		this.gradyear = gradyear;
 	}
 
 	@Column(nullable=true)
-	public float getGradpercent() {
+	public String getGradpercent() {
 		return gradpercent;
 	}
 
-	public void setGradpercent(float gradpercent) {
+	public void setGradpercent(String gradpercent) {
 		this.gradpercent = gradpercent;
 	}
 
@@ -339,20 +356,20 @@ public class Student {
 	}
 
 	@Column(nullable=true)
-	public int getHscyear() {
+	public String getHscyear() {
 		return hscyear;
 	}
 
-	public void setHscyear(int hscyear) {
+	public void setHscyear(String hscyear) {
 		this.hscyear = hscyear;
 	}
 
 	@Column(nullable=true)
-	public float getHscpercent() {
+	public String getHscpercent() {
 		return hscpercent;
 	}
 
-	public void setHscpercent(float hscpercent) {
+	public void setHscpercent(String hscpercent) {
 		this.hscpercent = hscpercent;
 	}
 
@@ -366,25 +383,25 @@ public class Student {
 	}
 
 	@Column(nullable=true)
-	public int getDiplomayear() {
+	public String getDiplomayear() {
 		return diplomayear;
 	}
 
-	public void setDiplomayear(int diplomayear) {
+	public void setDiplomayear(String diplomayear) {
 		this.diplomayear = diplomayear;
 	}
 
 	@Column(nullable=true)
-	public float getDiplomapercent() {
+	public String getDiplomapercent() {
 		return diplomapercent;
 	}
 
-	public void setDiplomapercent(float diplomapercent) {
+	public void setDiplomapercent(String diplomapercent) {
 		this.diplomapercent = diplomapercent;
 	}
 
 	@Column(nullable=true)
-	public long getContact() {
+	public String getContact() {
 		return contact;
 	}
 	

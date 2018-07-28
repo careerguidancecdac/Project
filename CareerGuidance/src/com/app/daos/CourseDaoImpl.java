@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.pojos.Courses;
+import com.app.pojos.Module;
 import com.app.pojos.Student;
 
 @Component
@@ -25,16 +26,22 @@ public class CourseDaoImpl implements CourseDao {
 	}
 	
 	@Override
-	public boolean registerStudent(Student s)
+	public boolean registerStudentToCourse(Student s,int cid)
 	{
-		try{
-		factory.getCurrentSession().save(s);
+		Courses c = getCourseById(cid);
+		c.registerStudent(s);
 		return true;
-		}
-		catch(HibernateException e)
-		{
-		return false;
-		}
+	}
+	
+	@Override
+	public Module getModuleById(int id) {
+		return factory.getCurrentSession().get(Module.class, id);
+	}
+
+	@Override
+	public Courses getCourseById(int id)
+	{
+		return factory.getCurrentSession().get(Courses.class, id);
 	}
 
 }

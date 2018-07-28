@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page session="true" %>
 <!DOCTYPE html> 
 <html>
 <head>
@@ -65,6 +65,11 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+
+.myPar{
+  	font-size: 24px;
+  	font-family: sans-serif;
+  }
 </style>
 
 </head>
@@ -73,16 +78,28 @@ body {
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a class="glyphicon glyphicon-home" href="#">&nbsp;Home</a>
   <a class="glyphicon glyphicon-user" href="profilecomplete">&nbsp;Profile</a>
-  <a class="glyphicon glyphicon-education" href="#">&nbsp;MyCourses</a>
-  <a class="glyphicon glyphicon-info-sign" href="#">&nbsp;MyTests</a>
-  <a class="glyphicon glyphicon-tasks" href="#">&nbsp;Today'sTask</a>
-  <a class="glyphicon glyphicon-calendar" href="#">&nbsp;Today'sTest</a>
-  <a class="glyphicon glyphicon-off" href="#">&nbsp;Logout</a>
+  <a class="glyphicon glyphicon-education" href="course">&nbsp;MyCourses</a>
+  <!-- <a class="glyphicon glyphicon-info-sign" href="#">&nbsp;MyTests</a> -->
+  <a class="glyphicon glyphicon-tasks" href="todaystask">&nbsp;Today'sTask</a>
+  <a class="glyphicon glyphicon-calendar" href="todaystest">&nbsp;Today'sTest</a>
+  <a class="glyphicon glyphicon-off" href="testMarks">&nbsp;Logout</a>
 </div>
 
 <div id="main">
   <h2>Welcome ${sessionScope.student.fname}</h2>
   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+</div>
+
+<div class="container-fluid">
+	<div class="col-md-2"></div>
+	<div class="col-md-1"><b><i>You Need to Visit Today's Task and Complete it.</i></b></div>
+	<div class="col-md-1"><b><i><span>${sessionScope.testwarnmsg}</span></i></b></div>
+	<%-- <div class="col-md-6"><img width="70%" src="<c:url value='/images/pl.png'></c:url>"></img></div> --%>
+	<div class="col-md-4"></div>
+  	<div class="col-md-4 myPar"><h1>Registered Course</h1><hr>
+	<h3>${sessionScope.student.course.coursename}</h3>
+	<img alt="img" width="70%" src="<c:url value='${sessionScope.student.course.courseimg}'/>" />
+	<br><p>${sessionScope.student.course.description}</p></div>
 </div>
 
 <script>

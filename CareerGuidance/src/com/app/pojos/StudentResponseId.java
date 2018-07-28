@@ -58,6 +58,15 @@ public class StudentResponseId implements Serializable {
 		return true;
 	}
 
+	public StudentResponseId(QuestionSet questionid, Student student) {
+		super();
+		this.questionid = questionid;
+		this.student = student;
+	}
+
+	public StudentResponseId() {
+	}
+
 	public void setStudent(Student student) {
 		this.student = student;
 	}
