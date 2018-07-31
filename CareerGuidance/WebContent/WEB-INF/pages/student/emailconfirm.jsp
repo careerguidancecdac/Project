@@ -19,7 +19,8 @@
 	<div class="container">
 	<div class="bg-success">
 		<p>An Email has been sent on <b>${student.email}</b></p>
-		<a href='<c:url value="login"></c:url>'>.Please click on confirmation link to activate your account</a>
+		<p>.Please click on confirmation link to activate your account</p>
+		<a href='<c:url value="login"></c:url>'>Click Here To Login</a>
 	</div>
 	</div>
 </body>

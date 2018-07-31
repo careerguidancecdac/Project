@@ -18,5 +18,6 @@ public interface StudentDao {
 	public boolean saveStudentResponse(String sres,int qid,int regno);
 	public QuestionSet getQuestionById(int id);
 	public boolean updateMarks(int regno,int testid);
+	public DailyTest getTestResult(int regno);
 }
 

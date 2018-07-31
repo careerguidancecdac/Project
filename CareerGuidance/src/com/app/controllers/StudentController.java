@@ -55,6 +55,15 @@ public class StudentController {
 	@PostMapping("/register")
 	public String registerStudent(@ModelAttribute Student student,Model map) throws NoSuchAlgorithmException, UnsupportedEncodingException
 	{
+		Student s = studao.getStudentByEmail(student.getEmail());
+		System.out.println(s);
+/*		System.out.println(s + "EMAIL"+s.getEmail());
+*/		if(s!=null)
+		{
+			System.out.println("IN NULL");
+			map.addAttribute("emailmsg","email aready exits");
+			return "student/stu_register";
+		}
 		student.setPassword(DataUtils.generateHash(student.getPassword()));
 		DataUtils.sendEmail(student.getEmail());
 		if(studao.registerStudent(student))
@@ -64,16 +73,22 @@ public class StudentController {
 		}
 		else
 		{
-			return "student/registeration_error";
+			return "student/stu_register";
 		}
 	}
 	
 	@GetMapping("/activateaccount")
-	public String activateAccount(@RequestParam String email)
+	public String activateAccount(@RequestParam String email,HttpSession sess)
 	{
+		/*System.out.println(sess.getAttribute("student"));
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect: login";
+		}S*/
+		System.out.println("IN ACTIVATE ACCOUNT");
 		System.out.println("In Activate Account"+ "Email = "+email);
 		studao.activateAccount(email);
-		return "student/login";
+		return "redirect: login";
 	}
 	
 	@GetMapping("/login")
@@ -88,12 +103,17 @@ public class StudentController {
 	{
 		if(studao.validateLogin(student.getEmail(), DataUtils.generateHash(student.getPassword())))
 		{
+			if(studao.getStudentByEmail(student.getEmail()).isAccstatus()==false)
+			{
+				map.addAttribute("errormessage","Account Not Activated");
+				return "student/login";
+			}
 			sess.setAttribute("student", studao.getStudentByEmail(student.getEmail()));
 			return "student/profile";
 		}
 		else
 		{
-			map.addAttribute("errormessage", "Invalid Login");
+			map.addAttribute("errormessage", "Invalid username or password");
 			map.addAttribute("student", new Student());
 			return "student/login";
 		}
@@ -102,15 +122,14 @@ public class StudentController {
 	@GetMapping("/profilecomplete")
 	public String getProfileCompletion(Model map,HttpSession sess)
 	{
-		System.out.println(sess.getAttribute("student"));
-		if(sess.getAttribute("student")!=null)
+		if(sess.getAttribute("student")==null)
 		{
+			return "redirect:/student/login";
+		}
 			map.addAttribute("student", sess.getAttribute("student"));
 			return "student/profilecomplete";
-		}
-		else{
-			return "student/login";
-		}
+		
+		
 	}
 	
 	@PostMapping("/profilecomplete")
@@ -139,7 +158,11 @@ public class StudentController {
 			chaps.add(c);
 		}
 		sess.setAttribute("task", chaps);*/
-	
+		
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect:/student/login";
+		}
 	List<Chapter> chaps = studao.getChaptersNative(((Student)sess.getAttribute("student")).getRegno());
 	sess.setAttribute("task", chaps);
 	for(Chapter c:chaps)
@@ -148,38 +171,61 @@ public class StudentController {
 	}
 	
 	@GetMapping("/course")
-	public String getCoursePage(Model map)
+	public String getCoursePage(Model map,HttpSession sess)
 	{
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect:/student/login";
+		}
 		map.addAttribute("courses",cdao.getCourses());
 		return "student/courses";
 	}
 	
-	@GetMapping("/registerCourse/{courseid}")
-	public String registerStudentToCourse(@PathVariable int courseid,HttpSession sess,Model map)
+	@GetMapping("/registerCourse")
+	public String registerStudentToCourse(@RequestParam int courseid,HttpSession sess,Model map)
 	{
-		Student s =(Student)sess.getAttribute("student");
-		if(s.getCourse().getCourseid() > 0)
+		if(sess.getAttribute("student")==null)
 		{
-			map.addAttribute("regcou", "You have already Registered to course.You need to complete current course before starting new course");
-			return "student/profile";
+			return "redirect:/student/login";
 		}
-		if(s.isProfilecompleted()!=true)
-			return "redirect:student/profilecomplete";
+		
+		Student s = studao.getStudentByEmail(((Student)sess.getAttribute("student")).getEmail());
+		/*System.out.println(s + "++++++"+s.getCourse());*/
+		if(s.isProfilecompleted()==false)
+		{
+			sess.setAttribute("profileerrmsg", "You have not completed your profile.You have to complete profile before registering to any course");
+			return "redirect: profile";
+		}
+		if(s.getCourse() != null)
+		{
+			sess.setAttribute("regcou", "You have already Registered to course.You need to complete current course before starting new course");
+			return "redirect: profile";
+		}
+		
 		Courses c = cdao.getCourseById(courseid);
 		studao.registerWithCourse(s.getRegno(), c);
 		cdao.registerStudentToCourse(studao.getStudentById(s.getRegno()), c.getCourseid());
-		return "redirect:student/profile";
+		return "redirect: profile";
 	}
 	
 	@GetMapping("/profile")
-	public String getProfile()
+	public String getProfile(HttpSession sess)
 	{
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect:/student/login";
+		}
 		return "student/profile";
 	}
 	
 	@GetMapping("/taskcomplete")
 	public String scheduleTest(@RequestParam int testid,HttpSession sess)
 	{
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect:/student/login";
+		}
+		
 		sess.setAttribute("testwarnmsg", "Your Test has been scheduled.Please visit Today's Test and give the Test.You will not be able to proceed further without giving test");
 		sess.setAttribute("test_id", testid);
 		sess.setAttribute("questions", studao.getQuesionsByTestId(testid));
@@ -187,8 +233,12 @@ public class StudentController {
 	}
 	
 	@GetMapping("/todaystest")
-	public String giveTest(Model map)
+	public String giveTest(Model map,HttpSession sess)
 	{
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect:/student/login";
+		}
 		map.addAttribute("studentres", new StudentResponse());
 		return "student/test";
 	}
@@ -202,8 +252,9 @@ public class StudentController {
 			studao.saveStudentResponse(req.getParameter("question"+i+"_option"), Integer.parseInt(req.getParameter("qid"+i)),Integer.parseInt(req.getParameter("regno")));
 		}
 		studao.updateMarks(((Student)sess.getAttribute("student")).getRegno(), (int)sess.getAttribute("test_id"));
-		
-		return "redirect:profile";
+		sess.setAttribute("testwarnmsg", "");
+/*		sess.setAttribute("testres");
+*/		return "redirect:profile";
 	}
 	
 	/*@GetMapping("/testMarks")
@@ -213,4 +264,15 @@ public class StudentController {
 		studao.updateMarks(((Student)sess.getAttribute("student")).getRegno(), (int)sess.getAttribute("test_id"));
 		return "redirect:profile";
 	}*/
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession sess)
+	{
+		if(sess.getAttribute("student")==null)
+		{
+			return "redirect:/student/login";
+		}
+		sess.invalidate();
+		return  "redirect: login";
+	}
 }

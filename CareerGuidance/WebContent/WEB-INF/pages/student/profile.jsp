@@ -16,6 +16,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.5.3/js/bootstrapValidator.js"></script>
 
 <title>Career Guidance</title>
+<!-- <SCRIPT type="text/javascript">
+	window.history.forward();
+	function noBack() { window.history.forward(); }
+</SCRIPT> -->
 <style>
 body {
     font-family: "Lato", sans-serif;
@@ -82,7 +86,7 @@ body {
   <!-- <a class="glyphicon glyphicon-info-sign" href="#">&nbsp;MyTests</a> -->
   <a class="glyphicon glyphicon-tasks" href="todaystask">&nbsp;Today'sTask</a>
   <a class="glyphicon glyphicon-calendar" href="todaystest">&nbsp;Today'sTest</a>
-  <a class="glyphicon glyphicon-off" href="testMarks">&nbsp;Logout</a>
+  <a class="glyphicon glyphicon-off" href="logout">&nbsp;Logout</a>
 </div>
 
 <div id="main">
@@ -94,12 +98,20 @@ body {
 	<div class="col-md-2"></div>
 	<div class="col-md-1"><b><i>You Need to Visit Today's Task and Complete it.</i></b></div>
 	<div class="col-md-1"><b><i><span>${sessionScope.testwarnmsg}</span></i></b></div>
+	<div class="col-md-1"><b><i><span class="text-danger">${sessionScope.profileerrmsg}</span></i></b></div>
 	<%-- <div class="col-md-6"><img width="70%" src="<c:url value='/images/pl.png'></c:url>"></img></div> --%>
-	<div class="col-md-4"></div>
+	<div class="col-md-3">
+	
+	
+	</div>
   	<div class="col-md-4 myPar"><h1>Registered Course</h1><hr>
-	<h3>${sessionScope.student.course.coursename}</h3>
+  	<c:if test="${sessionScope.student.course.courseid > 0}">
+  	<h3>${sessionScope.student.course.coursename}</h3>
 	<img alt="img" width="70%" src="<c:url value='${sessionScope.student.course.courseimg}'/>" />
-	<br><p>${sessionScope.student.course.description}</p></div>
+	<br><p>${sessionScope.student.course.description}</p><br>
+	<span class="text-warning"><b>${sessionScope.regcou}</b></span>
+  	</c:if>
+	</div>
 </div>
 
 <script>

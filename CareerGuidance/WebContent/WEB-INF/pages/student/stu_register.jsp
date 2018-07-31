@@ -124,6 +124,7 @@
   				<div class="input-group">
   				<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
   				<form:input path="email" cssClass="form-control"/>
+  				<span style="color:red">${emailmsg}</span>
     			</div>
  		 	</div>
  		 	</div>

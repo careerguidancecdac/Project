@@ -3,6 +3,7 @@ package com.app.daos;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureQuery;
 
@@ -45,8 +46,14 @@ public class StudentDaoImpl implements StudentDao {
 	@Override
 	public Student getStudentByEmail(String email)
 	{
-		String sql = "select s from Student s where s.email=:em";
-		return factory.getCurrentSession().createQuery(sql, Student.class).setParameter("em", email).getSingleResult();
+		try{
+				String sql = "select s from Student s where s.email=:em";
+				return factory.getCurrentSession().createQuery(sql, Student.class).setParameter("em", email).getSingleResult();
+		}
+		catch(NoResultException e)
+		{
+			return null;
+		}
 	}
 	
 	@Override
@@ -123,9 +130,16 @@ public class StudentDaoImpl implements StudentDao {
 	}
 	
 	@Override
+	public DailyTest getTestResult(int regno) {
+		return factory.getCurrentSession().get(DailyTest.class, regno);
+	}
+
+	@Override
 	public boolean updateProfile(Student s)
 	{
 		factory.getCurrentSession().update(s);
+		Student s1 = factory.getCurrentSession().get(Student.class, s.getRegno());
+		s1.setProfilecompleted(true);
 		return true;
 	}
 

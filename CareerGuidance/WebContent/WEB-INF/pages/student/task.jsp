@@ -68,6 +68,7 @@ table, th, td {
 <body>
 
 <div class="container">
+<c:if test="${sessionScope.student.course.courseid > 0}">
 <table class="table table-hover">
 <caption><b>Today's Task</b></caption>
 <tr><th>ChapterName</th><th>Description</th><th>Links for Studying</th></tr>
@@ -80,8 +81,9 @@ table, th, td {
 	<c:set var="tid" value="${task.testid.testid}"/>
 </c:forEach>
 </table>
-
 <a class="button" href="taskcomplete?testid=${tid}"><span>TaskCompleted>></span></a>
+</c:if>	
+<a class="button" href="http://localhost:7070/CareerGuidance/student/profile"><span>Back</span></a>
 </div>
 </body>
 </html>

@@ -24,20 +24,21 @@
       margin: auto;
 	  
   }
+  
 </style>
-<body style="background:linear-gradient(to right,rgba(255,0,0,0),rgba(255,0,0,1))">
+<body style="background:linear-gradient(to right,#7BCCB5,#43C6DB,#81D8D0)">
 	<nav class="navbar navbar-default">
-  <div class="container-fluid"> 
+  <div style="background:linear-gradient(to right,#7BCCB5,#43C6DB,#81D8D0)" class="container-fluid"> 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> 
       <a class="navbar-brand" href="#">Brand</a> </div>
     
     <!-- Collect the nav links, forms, and other content for toggling -->  
     
     <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-<div class="navbar-header">
+  <div style="background-color: #504A4B" class="container-fluid">
+<div style="background-color: #504A4B" class="navbar-header">
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
@@ -45,9 +46,9 @@
 </button>
 <a class="navbar-brand" href="#">CareerGuidance</a>
 </div>
-<div class="collapse navbar-collapse" id="myNavbar">
+<div style="background-color: #504A4B"  class="collapse navbar-collapse" id="myNavbar">
 <ul class="nav navbar-nav">
-<li class="active"><a href="#">Home</a></li>
+<li><a href="#">Home</a></li>
 <li><a href="#aboutus">About Us</a></li>
 <li><a href="#feedback">Rate Us</a></li>
 </ul>
@@ -92,7 +93,7 @@
     <div class="carousel-inner" role="listbox">
 
       <div class="item active">
-        <img src="<c:url value='/images/online.jpg' />" alt="Chania" width="460" height="345">
+        <img src="<c:url value='/images/img8.jpg' />" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
           <h3>Our Motive</h3>
           <p>To Give Job To Students.</p>
@@ -100,7 +101,7 @@
       </div>
 
       <div class="item">
-        <img src="<c:url value='/images/home.jpg' />" alt="Chania" width="460" height="345">
+        <img src="<c:url value='/images/img5.jpg' />" alt="Chania" width="460" height="345">
         <div class="carousel-caption">
           <h3>Our Motive</h3>
           <p>TO Give Proper Guidance To Students.</p>
@@ -108,7 +109,7 @@
       </div>
     
       <div class="item">
-        <img src="<c:url value='/images/Online.png' />" alt="Flower" width="460" height="345">
+        <img src="<c:url value='/images/img3.jpg' />" alt="Flower" width="460" height="345">
         <div class="carousel-caption">
           <h3>Our Motive</h3>
           <p>To Give Job To Students.</p>
@@ -116,7 +117,7 @@
       </div>
 
       <div class="item">
-        <img src="<c:url value='/images/img.jpg' />" alt="Flower" width="460" height="345">
+        <img src="<c:url value='/images/img2.jpg' />" alt="Flower" width="460" height="345">
         <div class="carousel-caption">
          <h3>Our Motive</h3>
           <p>TO Give Proper Guidance To Students.</p>
@@ -169,7 +170,7 @@
         <h5><b>Front End Developer</b></h5>
         <p>Don't let what you cannot do interfere with what you can do</p>
       </div>
-      <div class="col-lg-4 col-sm-12 text-center"><img class="img-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/adikul.JPG" data-holder-rendered="true">
+      <div class="col-lg-4 col-sm-12 text-center"><img class="img-circle" alt="140x140" style="width: 140px; height: 140px;" src="images/adikul.jpeg" data-holder-rendered="true">
         <h3>Aditya Kulkarni</h3>
         <h5><b>UI Developer</b></h5>
         <p>It always seems impossible until it's done</p>
@@ -246,8 +247,14 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">E-learning Details</h4>
         </div>
-        <div class="modal-body">
-          <img src="<c:url value='images/elearn.png'/>" height="750px" width="550px"/>
+        <div style="background-color: yellow;color: red;font-family: sans-serif;font-size: 16px" class="modal-body">
+        	1.Register With Us<br>
+        	2.Complete Your Profile<br>
+        	3.Explore our Courses<br>
+        	4.Get Started with any of the Courses<br>
+        	5.Complete your Daily Task with help of provided material<br>
+        	6.Give Test at end of each module to be eligible for recruitment<br>
+          <%-- <img src="<c:url value='images/elearn.png'/>" height="750px" width="550px"/> --%>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -269,10 +276,14 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Company Details</h4>
+          <h4 class="modal-title">Recruitment Details</h4>
         </div>
-        <div class="modal-body">
-        	
+        <div  style="background-color: yellow;color: red;font-family: sans-serif;font-size: 16px" class="modal-body" class="modal-body">
+        	1.Companies coming for Recruitment,first have to register with us<br>
+        	2.Companies will Post their Job Requirements on our portal<br>
+        	3.We will filter student profiles based on company requirements<br>4.Then we will share student profiles with company<br>
+        	5.Company will conduct Recruitment based on their schedule<br>
+        	6.And Students will directly get Mail regarding Results<br>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -325,7 +336,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <p>Copyright © MyWebsite. All rights reserved.</p>
+        <p>Copyright © UnBerozgaar. All rights reserved.</p>
       </div>
     </div>
   </div>
