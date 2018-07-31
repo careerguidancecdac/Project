@@ -5,6 +5,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
+<meta http-equiv="refresh" content="10">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -96,12 +97,12 @@ body {
 
 <div class="container-fluid">
 	<div class="col-md-2"></div>
-	<div class="col-md-1"><b><i>You Need to Visit Today's Task and Complete it.</i></b></div>
+	<c:if test="${sessionScope.student.course.courseid > 0}"><div class="col-md-1"><b><i>You Need to Visit Today's Task and Complete it.</i></b></div></c:if>
 	<div class="col-md-1"><b><i><span>${sessionScope.testwarnmsg}</span></i></b></div>
 	<div class="col-md-1"><b><i><span class="text-danger">${sessionScope.profileerrmsg}</span></i></b></div>
 	<%-- <div class="col-md-6"><img width="70%" src="<c:url value='/images/pl.png'></c:url>"></img></div> --%>
 	<div class="col-md-3">
-	
+	${sessionScope.student.course.courseid}
 	
 	</div>
   	<div class="col-md-4 myPar"><h1>Registered Course</h1><hr>

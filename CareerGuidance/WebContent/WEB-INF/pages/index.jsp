@@ -63,7 +63,7 @@
 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-log-in"></span>Log In<span class="caret"></span></a>
 <ul class="dropdown-menu">
 <li><a href='<c:url value="student/login" />'>Student</a></li>
-<li><a href="company/login">Company</a></li>
+<li><a href="company/">Company</a></li>
 </ul></li>
 
 </ul>

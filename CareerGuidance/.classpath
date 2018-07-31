@@ -20,5 +20,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/amol/postgresql-42.2.4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/excelfile">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -92,8 +92,13 @@ public class StudentController {
 	}
 	
 	@GetMapping("/login")
-	public String getLogin(Model map)
+	public String getLogin(Model map,HttpSession sess)
 	{
+		if(sess.getAttribute("student")!=null)
+		{
+			return "redirect: profile";
+		}
+		
 		map.addAttribute("student", new Student());
 		return "student/login";
 	}
@@ -109,7 +114,7 @@ public class StudentController {
 				return "student/login";
 			}
 			sess.setAttribute("student", studao.getStudentByEmail(student.getEmail()));
-			return "student/profile";
+			return "redirect: profile";
 		}
 		else
 		{
@@ -133,11 +138,12 @@ public class StudentController {
 	}
 	
 	@PostMapping("/profilecomplete")
-	public String completeProfile(@ModelAttribute Student student)
+	public String completeProfile(@ModelAttribute Student student,HttpSession sess)
 	{
 		System.out.println("IN POST");
 		System.out.println(student);
 		studao.updateProfile(student);
+		sess.setAttribute("profileerrmsg", "");
 		return "student/profile";
 	}
 	
@@ -211,6 +217,7 @@ public class StudentController {
 	@GetMapping("/profile")
 	public String getProfile(HttpSession sess)
 	{
+		System.out.println(sess.getAttribute("student"));
 		if(sess.getAttribute("student")==null)
 		{
 			return "redirect:/student/login";

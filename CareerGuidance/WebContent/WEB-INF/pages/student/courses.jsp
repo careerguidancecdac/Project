@@ -107,27 +107,27 @@
  --%>
  <div id="section1" class="container-fluid">
 	<h1>${courses[0].coursename}</h1>
-	<div class="col-md-6"><img width="70%" src="<c:url value='/images/webdev.jpeg'></c:url>"></img></div>
+	<div class="col-md-6"><img width="70%" src="<c:url value='${courses[0].courseimg}'></c:url>"></img></div>
 	<div class="col-md-2"><a class="button" style="float: inherit;" href="registerCourse?courseid=${courses[0].courseid}"><span>Get Started</span></a></div>
   	<div class="col-md-4 myPar"><p>${courses[0].description}</p></div>
 </div>
  
  <div id="section2" class="container-fluid">
 	<h1>${courses[1].coursename}</h1>
-	<div class="col-md-6"><img width="70%" src="<c:url value='/images/pl.png'></c:url>"></img></div>
+	<div class="col-md-6"><img width="70%" src="<c:url value='${courses[1].courseimg}'></c:url>"></img></div>
 	<div class="col-md-2"><a class="button" style="float: inherit;" href="registerCourse?courseid=${courses[1].courseid}"><span>Get Started</span></a></div>
   	<div class="col-md-4 myPar"><p>${courses[1].description}</p></div>
 </div>
 <div id="section3" class="container-fluid">
   <h1>${courses[2].coursename}</h1>
-  <div class="col-md-6"><img width="70%" src="<c:url value='/images/os.jpeg'></c:url>"></img></div>
-  <div class="col-md-2"><a class="button" style="float: inherit;" href="registerCourse?courseid=${courses[0].courseid}"><span>Get Started</span></a></div>
+  <div class="col-md-6"><img width="70%" src="<c:url value='${courses[2].courseimg}'></c:url>"></img></div>
+  <div class="col-md-2"><a class="button" style="float: inherit;" href="registerCourse?courseid=${courses[2].courseid}"><span>Get Started</span></a></div>
   <div class="col-md-4 myPar"><p>${courses[2].description}</p></div>
 </div>
 <div id="section4" class="container-fluid">
   <h1>${courses[3].coursename}</h1>
-  <div class="col-md-6"><img width="70%" src="<c:url value='/images/se.jpg'></c:url>"></img></div>
-  <div class="col-md-2"><a class="button" style="float: inherit;" href="registerCourse?courseid=${courses[0].courseid}"><span>Get Started</span></a></div>
+  <div class="col-md-6"><img width="70%" src="<c:url value='${courses[3].courseimg}'></c:url>"></img></div>
+  <div class="col-md-2"><a class="button" style="float: inherit;" href="registerCourse?courseid=${courses[3].courseid}"><span>Get Started</span></a></div>
   <div class="col-md-4 myPar"><p>${courses[3].description}</p></div>
 </div>
 

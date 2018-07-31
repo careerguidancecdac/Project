@@ -58,7 +58,7 @@ public class DataUtils {
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			message.setSubject("UnBerozgar");
 			message.setContent("<h3>Click the link to activate your account</h3>"
-					+ "<a href='http://192.168.43.130:7070/CareerGuidance/student/activateaccount?email="+to+">Click here</a> to activate your account"
+					+ "<a href='http://192.168.1.13:7070/CareerGuidance/student/activateaccount?email="+to+">Click here</a> to activate your account"
 					+ "", "text/html");
 			
 			Transport.send(message);
